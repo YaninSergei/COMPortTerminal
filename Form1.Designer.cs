@@ -31,14 +31,18 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnClearDataIn = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.btnsave = new System.Windows.Forms.Button();
             this.tBoxDataIn = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnClearDataOut = new System.Windows.Forms.Button();
             this.tBoxDataOut = new System.Windows.Forms.TextBox();
             this.btnsend = new System.Windows.Forms.Button();
             this.tBoxOut = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.chBoxRtsEnable = new System.Windows.Forms.CheckBox();
+            this.chBoxDtrEnable = new System.Windows.Forms.CheckBox();
             this.LabelConnectStatus = new System.Windows.Forms.Label();
             this.btnStop = new System.Windows.Forms.Button();
             this.btnConnect = new System.Windows.Forms.Button();
@@ -54,11 +58,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.cBoxComPort = new System.Windows.Forms.ComboBox();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
-            this.btnClearDataOut = new System.Windows.Forms.Button();
-            this.chBoxDtrEnable = new System.Windows.Forms.CheckBox();
-            this.chBoxRtsEnable = new System.Windows.Forms.CheckBox();
-            this.btnClearDataIn = new System.Windows.Forms.Button();
-            this.chBoxAddToOldData = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -67,7 +66,6 @@
             // groupBox1
             // 
             this.groupBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.groupBox1.Controls.Add(this.chBoxAddToOldData);
             this.groupBox1.Controls.Add(this.btnClearDataIn);
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.btnsave);
@@ -80,10 +78,24 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Входящие данные";
             // 
+            // btnClearDataIn
+            // 
+            this.btnClearDataIn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnClearDataIn.BackColor = System.Drawing.Color.LightGray;
+            this.btnClearDataIn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnClearDataIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnClearDataIn.Location = new System.Drawing.Point(308, 483);
+            this.btnClearDataIn.Name = "btnClearDataIn";
+            this.btnClearDataIn.Size = new System.Drawing.Size(40, 32);
+            this.btnClearDataIn.TabIndex = 14;
+            this.btnClearDataIn.Text = "<---";
+            this.btnClearDataIn.UseVisualStyleBackColor = false;
+            this.btnClearDataIn.Click += new System.EventHandler(this.btnClearDataIn_Click);
+            // 
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(130, 529);
+            this.button1.Location = new System.Drawing.Point(198, 552);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(94, 33);
             this.button1.TabIndex = 13;
@@ -96,7 +108,7 @@
             this.btnsave.BackColor = System.Drawing.Color.PowderBlue;
             this.btnsave.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnsave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnsave.Location = new System.Drawing.Point(257, 556);
+            this.btnsave.Location = new System.Drawing.Point(6, 556);
             this.btnsave.Name = "btnsave";
             this.btnsave.Size = new System.Drawing.Size(91, 33);
             this.btnsave.TabIndex = 1;
@@ -129,11 +141,25 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Исходящие данные";
             // 
+            // btnClearDataOut
+            // 
+            this.btnClearDataOut.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnClearDataOut.BackColor = System.Drawing.Color.LightGray;
+            this.btnClearDataOut.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnClearDataOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnClearDataOut.Location = new System.Drawing.Point(307, 484);
+            this.btnClearDataOut.Name = "btnClearDataOut";
+            this.btnClearDataOut.Size = new System.Drawing.Size(40, 32);
+            this.btnClearDataOut.TabIndex = 4;
+            this.btnClearDataOut.Text = "<---";
+            this.btnClearDataOut.UseVisualStyleBackColor = false;
+            this.btnClearDataOut.Click += new System.EventHandler(this.btn_delete_Click);
+            // 
             // tBoxDataOut
             // 
             this.tBoxDataOut.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.tBoxDataOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tBoxDataOut.Location = new System.Drawing.Point(5, 369);
+            this.tBoxDataOut.Location = new System.Drawing.Point(0, 370);
             this.tBoxDataOut.Multiline = true;
             this.tBoxDataOut.Name = "tBoxDataOut";
             this.tBoxDataOut.ScrollBars = System.Windows.Forms.ScrollBars.Both;
@@ -164,6 +190,7 @@
             this.tBoxOut.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.tBoxOut.Size = new System.Drawing.Size(342, 328);
             this.tBoxOut.TabIndex = 0;
+            this.tBoxOut.TextChanged += new System.EventHandler(this.tBoxOut_TextChanged);
             // 
             // groupBox3
             // 
@@ -191,6 +218,30 @@
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Параметры";
+            // 
+            // chBoxRtsEnable
+            // 
+            this.chBoxRtsEnable.AutoSize = true;
+            this.chBoxRtsEnable.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.chBoxRtsEnable.Location = new System.Drawing.Point(144, 249);
+            this.chBoxRtsEnable.Name = "chBoxRtsEnable";
+            this.chBoxRtsEnable.Size = new System.Drawing.Size(110, 20);
+            this.chBoxRtsEnable.TabIndex = 15;
+            this.chBoxRtsEnable.Text = "RTS ENABLE";
+            this.chBoxRtsEnable.UseVisualStyleBackColor = true;
+            this.chBoxRtsEnable.CheckedChanged += new System.EventHandler(this.chBoxRtsEnable_CheckedChanged);
+            // 
+            // chBoxDtrEnable
+            // 
+            this.chBoxDtrEnable.AutoSize = true;
+            this.chBoxDtrEnable.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.chBoxDtrEnable.Location = new System.Drawing.Point(10, 228);
+            this.chBoxDtrEnable.Name = "chBoxDtrEnable";
+            this.chBoxDtrEnable.Size = new System.Drawing.Size(111, 20);
+            this.chBoxDtrEnable.TabIndex = 14;
+            this.chBoxDtrEnable.Text = "DTR ENABLE";
+            this.chBoxDtrEnable.UseVisualStyleBackColor = true;
+            this.chBoxDtrEnable.CheckedChanged += new System.EventHandler(this.chBoxDtrEnable_CheckedChanged);
             // 
             // LabelConnectStatus
             // 
@@ -349,69 +400,6 @@
             // 
             this.serialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort1_DataReceived);
             // 
-            // btnClearDataOut
-            // 
-            this.btnClearDataOut.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnClearDataOut.BackColor = System.Drawing.Color.LightGray;
-            this.btnClearDataOut.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnClearDataOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnClearDataOut.Location = new System.Drawing.Point(307, 484);
-            this.btnClearDataOut.Name = "btnClearDataOut";
-            this.btnClearDataOut.Size = new System.Drawing.Size(40, 32);
-            this.btnClearDataOut.TabIndex = 4;
-            this.btnClearDataOut.Text = "<---";
-            this.btnClearDataOut.UseVisualStyleBackColor = false;
-            this.btnClearDataOut.Click += new System.EventHandler(this.btn_delete_Click);
-            // 
-            // chBoxDtrEnable
-            // 
-            this.chBoxDtrEnable.AutoSize = true;
-            this.chBoxDtrEnable.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.chBoxDtrEnable.Location = new System.Drawing.Point(10, 228);
-            this.chBoxDtrEnable.Name = "chBoxDtrEnable";
-            this.chBoxDtrEnable.Size = new System.Drawing.Size(111, 20);
-            this.chBoxDtrEnable.TabIndex = 14;
-            this.chBoxDtrEnable.Text = "DTR ENABLE";
-            this.chBoxDtrEnable.UseVisualStyleBackColor = true;
-            this.chBoxDtrEnable.CheckedChanged += new System.EventHandler(this.chBoxDtrEnable_CheckedChanged);
-            // 
-            // chBoxRtsEnable
-            // 
-            this.chBoxRtsEnable.AutoSize = true;
-            this.chBoxRtsEnable.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.chBoxRtsEnable.Location = new System.Drawing.Point(144, 228);
-            this.chBoxRtsEnable.Name = "chBoxRtsEnable";
-            this.chBoxRtsEnable.Size = new System.Drawing.Size(110, 20);
-            this.chBoxRtsEnable.TabIndex = 15;
-            this.chBoxRtsEnable.Text = "RTS ENABLE";
-            this.chBoxRtsEnable.UseVisualStyleBackColor = true;
-            this.chBoxRtsEnable.CheckedChanged += new System.EventHandler(this.chBoxRtsEnable_CheckedChanged);
-            // 
-            // btnClearDataIn
-            // 
-            this.btnClearDataIn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnClearDataIn.BackColor = System.Drawing.Color.LightGray;
-            this.btnClearDataIn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnClearDataIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnClearDataIn.Location = new System.Drawing.Point(308, 483);
-            this.btnClearDataIn.Name = "btnClearDataIn";
-            this.btnClearDataIn.Size = new System.Drawing.Size(40, 32);
-            this.btnClearDataIn.TabIndex = 14;
-            this.btnClearDataIn.Text = "<---";
-            this.btnClearDataIn.UseVisualStyleBackColor = false;
-            this.btnClearDataIn.Click += new System.EventHandler(this.btnClearDataIn_Click);
-            // 
-            // chBoxAddToOldData
-            // 
-            this.chBoxAddToOldData.AutoSize = true;
-            this.chBoxAddToOldData.Location = new System.Drawing.Point(6, 485);
-            this.chBoxAddToOldData.Name = "chBoxAddToOldData";
-            this.chBoxAddToOldData.Size = new System.Drawing.Size(128, 24);
-            this.chBoxAddToOldData.TabIndex = 16;
-            this.chBoxAddToOldData.Text = "Все данные";
-            this.chBoxAddToOldData.UseVisualStyleBackColor = true;
-            this.chBoxAddToOldData.CheckedChanged += new System.EventHandler(this.chBoxAddToOldData_CheckedChanged);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -469,7 +457,6 @@
         private System.Windows.Forms.CheckBox chBoxDtrEnable;
         private System.Windows.Forms.CheckBox chBoxRtsEnable;
         private System.Windows.Forms.Button btnClearDataIn;
-        private System.Windows.Forms.CheckBox chBoxAddToOldData;
     }
 }
 

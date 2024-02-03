@@ -52,7 +52,6 @@ namespace COMPortTerminal
             serialPort1.DtrEnable = false; 
             chBoxRtsEnable.Checked = false;
             serialPort1.RtsEnable = false;
-            chBoxAddToOldData.Checked = false;
 
         }
 
@@ -87,8 +86,8 @@ namespace COMPortTerminal
             catch (Exception err)
             {
                 MessageBox.Show(err.Message,"Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                LabelConnectStatus.Text = "Статус: Неподключено.";
-                progressBar1.BackColor = Color.Red;
+                LabelConnectStatus.Text = "Статус: Ошибка подключения.";
+                progressBar1.Value = 0;
                 btnConnect.Enabled = true;
                 btnStop.Enabled = false;
             }
@@ -169,15 +168,12 @@ namespace COMPortTerminal
 
         private void ShowData(object sender, EventArgs e)
         {
-            if (chBoxAddToOldData.Checked)
-            {
-                tBoxDataIn.Text += dataIN;
-            }
+            tBoxDataIn.Text += dataIN;
         }
 
-        private void chBoxAddToOldData_CheckedChanged(object sender, EventArgs e)
+        private void tBoxOut_TextChanged(object sender, EventArgs e)
         {
-          
+           
         }
     }
 }
