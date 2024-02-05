@@ -32,7 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnClearDataIn = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnGraphic = new System.Windows.Forms.Button();
             this.btnsave = new System.Windows.Forms.Button();
             this.tBoxDataIn = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -67,7 +67,7 @@
             // 
             this.groupBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.groupBox1.Controls.Add(this.btnClearDataIn);
-            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.btnGraphic);
             this.groupBox1.Controls.Add(this.btnsave);
             this.groupBox1.Controls.Add(this.tBoxDataIn);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -92,15 +92,17 @@
             this.btnClearDataIn.UseVisualStyleBackColor = false;
             this.btnClearDataIn.Click += new System.EventHandler(this.btnClearDataIn_Click);
             // 
-            // button1
+            // btnGraphic
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(198, 552);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(94, 33);
-            this.button1.TabIndex = 13;
-            this.button1.Text = "График";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnGraphic.BackColor = System.Drawing.Color.DarkSalmon;
+            this.btnGraphic.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.btnGraphic.Location = new System.Drawing.Point(6, 482);
+            this.btnGraphic.Name = "btnGraphic";
+            this.btnGraphic.Size = new System.Drawing.Size(91, 33);
+            this.btnGraphic.TabIndex = 13;
+            this.btnGraphic.Text = "График";
+            this.btnGraphic.UseVisualStyleBackColor = false;
+            this.btnGraphic.Click += new System.EventHandler(this.btnGraphic_Click);
             // 
             // btnsave
             // 
@@ -451,7 +453,7 @@
         private System.Windows.Forms.Button btnStop;
         private System.Windows.Forms.Button btnConnect;
         private System.Windows.Forms.ProgressBar progressBar1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnGraphic;
         private System.Windows.Forms.Label LabelConnectStatus;
         private System.Windows.Forms.Button btnClearDataOut;
         private System.Windows.Forms.CheckBox chBoxDtrEnable;

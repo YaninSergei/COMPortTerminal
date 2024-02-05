@@ -1,19 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.IO.Ports; //Библиотека по портам.
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using static System.Net.Mime.MediaTypeNames;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
-using System.Runtime.ConstrainedExecution;
+using System.Windows.Forms;
 
 namespace COMPortTerminal
 {
@@ -21,8 +9,8 @@ namespace COMPortTerminal
     {
         string dataOUT;
         string dataIN;
-        
-        public Form1() 
+
+        public Form1()
         {
             InitializeComponent();
         }
@@ -43,30 +31,30 @@ namespace COMPortTerminal
 
         }
 
-        private void Form1_Load_1(object sender, EventArgs e) 
+        private void Form1_Load_1(object sender, EventArgs e)
         {
             string[] ports = SerialPort.GetPortNames(); // Получаем список имен последовательных портов.
             cBoxComPort.Items.AddRange(ports); // отображение всех портов в выподающем списке cBoxComPort
             // Настройки поумолчанию:
             chBoxDtrEnable.Checked = false;
-            serialPort1.DtrEnable = false; 
+            serialPort1.DtrEnable = false;
             chBoxRtsEnable.Checked = false;
             serialPort1.RtsEnable = false;
 
         }
 
         private void btnConnect_Click(object sender, EventArgs e) // Обработчик событий при нажатии конпки "Connect".
-            // C Помощью конструкции (try...catch..finally) обрабатываем исключения для перехвата ошибок. Вначале выполняются все инструкции в блоке try.
-            //Если в этом блоке не возникло исключений, то после его выполнения начинает выполняться блок finally. И затем конструкция try..catch..finally завершает свою работу.
+                                                                  // C Помощью конструкции (try...catch..finally) обрабатываем исключения для перехвата ошибок. Вначале выполняются все инструкции в блоке try.
+                                                                  //Если в этом блоке не возникло исключений, то после его выполнения начинает выполняться блок finally. И затем конструкция try..catch..finally завершает свою работу.
         {
-            try 
+            try
             {   // Ниже задаём параметры Порта: PortName -Имя последовательного порта; BaudRate -Скорость передачи в бодах; DataBits - Количество битов, чтобыпредставлять один символ данных;
                 // StopBits -Шаблон битов, который указывает на конец символа; Parity -Четность; 
                 serialPort1.PortName = cBoxComPort.Text;
                 serialPort1.BaudRate = Convert.ToInt32(cBoxBaudRate.Text); // Convert.'тип данных'(конвертируемый объект) - Конвертация переменных в другой тип данных.
-                serialPort1.DataBits = Convert.ToInt32(cBoxDataBits.Text); 
+                serialPort1.DataBits = Convert.ToInt32(cBoxDataBits.Text);
                 serialPort1.StopBits = (StopBits)Enum.Parse(typeof(StopBits), cBoxStopBits.Text); //Enum.Parse: преобразование строки в перечисление. Смотреть описание - нихрена не понятно.
-                serialPort1.Parity = (Parity)Enum.Parse(typeof(Parity), cBoxParityBits.Text); 
+                serialPort1.Parity = (Parity)Enum.Parse(typeof(Parity), cBoxParityBits.Text);
                 serialPort1.Open();
                 progressBar1.Value = 100;
                 LabelConnectStatus.Text = "Статус: Подключено.";
@@ -85,7 +73,7 @@ namespace COMPortTerminal
             // Если нужный блок catch найден, то он выполняется, и после его завершения выполняется блок finally.
             catch (Exception err)
             {
-                MessageBox.Show(err.Message,"Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(err.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 LabelConnectStatus.Text = "Статус: Ошибка подключения.";
                 progressBar1.Value = 0;
                 btnConnect.Enabled = true;
@@ -119,10 +107,10 @@ namespace COMPortTerminal
 
         private void cBoxComPort_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (tBoxDataOut.Text.Length > 0)
-            {
-                tBoxDataOut.Text = tBoxDataOut.Text.Substring(0, tBoxDataOut.Text.Length - 1);
-            }
+            /*  if (tBoxDataOut.Text.Length > 0)
+              {
+                  tBoxDataOut.Text = tBoxDataOut.Text.Substring(0, tBoxDataOut.Text.Length - 1);
+             }*/
         }
 
         private void btn_delete_Click(object sender, EventArgs e)
@@ -144,7 +132,7 @@ namespace COMPortTerminal
 
         private void chBoxDtrEnable_CheckedChanged(object sender, EventArgs e) //обработчик события по нажатию чек бокса DTR сигнала
         {
-            if(chBoxDtrEnable.Checked) 
+            if (chBoxDtrEnable.Checked)
             {
                 serialPort1.DtrEnable = true;
             }
@@ -173,7 +161,13 @@ namespace COMPortTerminal
 
         private void tBoxOut_TextChanged(object sender, EventArgs e)
         {
-           
+
+        }
+
+        private void btnGraphic_Click(object sender, EventArgs e) // обработчик событий по нажатию на клавишу "График'.
+        {
+            Form2 frm = new Form2();
+            DialogResult = frm.ShowDialog();
         }
     }
 }
