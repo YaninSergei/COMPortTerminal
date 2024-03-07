@@ -31,6 +31,7 @@
             this.gBoxGraphiks = new System.Windows.Forms.GroupBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnDraw = new System.Windows.Forms.Button();
+            this.tBoxX = new System.Windows.Forms.TextBox();
             this.gBoxGraphiks.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -57,6 +58,9 @@
             // 
             // btnDraw
             // 
+            this.btnDraw.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnDraw.BackColor = System.Drawing.Color.PowderBlue;
             this.btnDraw.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.btnDraw.Location = new System.Drawing.Point(310, 387);
@@ -67,20 +71,28 @@
             this.btnDraw.UseVisualStyleBackColor = false;
             this.btnDraw.Click += new System.EventHandler(this.btnDraw_Click);
             // 
+            // tBoxX
+            // 
+            this.tBoxX.Location = new System.Drawing.Point(517, 405);
+            this.tBoxX.Name = "tBoxX";
+            this.tBoxX.Size = new System.Drawing.Size(34, 20);
+            this.tBoxX.TabIndex = 2;
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.OldLace;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.tBoxX);
             this.Controls.Add(this.btnDraw);
             this.Controls.Add(this.gBoxGraphiks);
             this.Name = "Form2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Form2";
             this.gBoxGraphiks.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -89,5 +101,6 @@
         private System.Windows.Forms.GroupBox gBoxGraphiks;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnDraw;
+        private System.Windows.Forms.TextBox tBoxX;
     }
 }

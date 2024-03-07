@@ -41,6 +41,9 @@
             this.btnsend = new System.Windows.Forms.Button();
             this.tBoxOut = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.rBtnHEX = new System.Windows.Forms.RadioButton();
+            this.rBtnD = new System.Windows.Forms.RadioButton();
+            this.rBtnASCII = new System.Windows.Forms.RadioButton();
             this.chBoxRtsEnable = new System.Windows.Forms.CheckBox();
             this.chBoxDtrEnable = new System.Windows.Forms.CheckBox();
             this.LabelConnectStatus = new System.Windows.Forms.Label();
@@ -58,6 +61,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.cBoxComPort = new System.Windows.Forms.ComboBox();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
+            this.tBoxT = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -66,6 +71,7 @@
             // groupBox1
             // 
             this.groupBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.groupBox1.Controls.Add(this.tBoxT);
             this.groupBox1.Controls.Add(this.btnClearDataIn);
             this.groupBox1.Controls.Add(this.btnGraphic);
             this.groupBox1.Controls.Add(this.btnsave);
@@ -197,6 +203,10 @@
             // groupBox3
             // 
             this.groupBox3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.groupBox3.Controls.Add(this.label6);
+            this.groupBox3.Controls.Add(this.rBtnHEX);
+            this.groupBox3.Controls.Add(this.rBtnD);
+            this.groupBox3.Controls.Add(this.rBtnASCII);
             this.groupBox3.Controls.Add(this.chBoxRtsEnable);
             this.groupBox3.Controls.Add(this.chBoxDtrEnable);
             this.groupBox3.Controls.Add(this.LabelConnectStatus);
@@ -221,11 +231,46 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Параметры";
             // 
+            // rBtnHEX
+            // 
+            this.rBtnHEX.AutoSize = true;
+            this.rBtnHEX.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.rBtnHEX.Location = new System.Drawing.Point(196, 294);
+            this.rBtnHEX.Name = "rBtnHEX";
+            this.rBtnHEX.Size = new System.Drawing.Size(57, 22);
+            this.rBtnHEX.TabIndex = 23;
+            this.rBtnHEX.Text = "HEX";
+            this.rBtnHEX.UseVisualStyleBackColor = true;
+            // 
+            // rBtnD
+            // 
+            this.rBtnD.AutoSize = true;
+            this.rBtnD.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.rBtnD.Location = new System.Drawing.Point(106, 294);
+            this.rBtnD.Name = "rBtnD";
+            this.rBtnD.Size = new System.Drawing.Size(50, 22);
+            this.rBtnD.TabIndex = 21;
+            this.rBtnD.Text = "BIN";
+            this.rBtnD.UseVisualStyleBackColor = true;
+            // 
+            // rBtnASCII
+            // 
+            this.rBtnASCII.AutoSize = true;
+            this.rBtnASCII.Checked = true;
+            this.rBtnASCII.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.rBtnASCII.Location = new System.Drawing.Point(6, 294);
+            this.rBtnASCII.Name = "rBtnASCII";
+            this.rBtnASCII.Size = new System.Drawing.Size(62, 22);
+            this.rBtnASCII.TabIndex = 20;
+            this.rBtnASCII.TabStop = true;
+            this.rBtnASCII.Text = "ASCII";
+            this.rBtnASCII.UseVisualStyleBackColor = true;
+            // 
             // chBoxRtsEnable
             // 
             this.chBoxRtsEnable.AutoSize = true;
             this.chBoxRtsEnable.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.chBoxRtsEnable.Location = new System.Drawing.Point(144, 249);
+            this.chBoxRtsEnable.Location = new System.Drawing.Point(143, 228);
             this.chBoxRtsEnable.Name = "chBoxRtsEnable";
             this.chBoxRtsEnable.Size = new System.Drawing.Size(110, 20);
             this.chBoxRtsEnable.TabIndex = 15;
@@ -402,6 +447,23 @@
             // 
             this.serialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort1_DataReceived);
             // 
+            // tBoxT
+            // 
+            this.tBoxT.Location = new System.Drawing.Point(149, 489);
+            this.tBoxT.Name = "tBoxT";
+            this.tBoxT.Size = new System.Drawing.Size(52, 26);
+            this.tBoxT.TabIndex = 15;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label6.Location = new System.Drawing.Point(55, 273);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(146, 18);
+            this.label6.TabIndex = 24;
+            this.label6.Text = "Система счисления";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -459,6 +521,11 @@
         private System.Windows.Forms.CheckBox chBoxDtrEnable;
         private System.Windows.Forms.CheckBox chBoxRtsEnable;
         private System.Windows.Forms.Button btnClearDataIn;
+        private System.Windows.Forms.RadioButton rBtnHEX;
+        private System.Windows.Forms.RadioButton rBtnD;
+        private System.Windows.Forms.RadioButton rBtnASCII;
+        private System.Windows.Forms.TextBox tBoxT;
+        private System.Windows.Forms.Label label6;
     }
 }
 

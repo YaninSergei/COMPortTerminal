@@ -1,18 +1,27 @@
 ﻿using System;
 using System.Drawing;
 using System.IO.Ports; //Библиотека по портам.
+using System.Security.Cryptography.X509Certificates;
 using System.Windows.Forms;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace COMPortTerminal
 {
     public partial class Form1 : Form
     {
-        string dataOUT;
-        string dataIN;
+        string dataOUT; // Переменная выходных данных
+        string dataIN;  // Переменная входных данных
+        int SistemaSchisleniya; // Переменная для системы счисления.
+        string T; // Переменная которая вычленяет последний символ из dataIN
+        Form2 frm = new Form2(); // Форма для вывода графика. 
+        
 
         public Form1()
-        {
+        {           // Конструктор класса Form 1:
             InitializeComponent();
+            System.Windows.Forms.Control.CheckForIllegalCrossThreadCalls = false; // предотвращает множетсвенный доступ к элементу из нескольких потоков. Отключает проверку конкурентного доступа у разных поток. Мы попытались работать с свойствами обьекта не из потока создателя.
+            
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -98,9 +107,14 @@ namespace COMPortTerminal
         {
             if (serialPort1.IsOpen)
             {
-                dataOUT = tBoxDataOut.Text;
+                string dataOUT = tBoxDataOut.Text;
                 serialPort1.Write(dataOUT);
+                tBoxOut.Text += $" \n + {dataOUT}";
+                tBoxDataOut.Clear();
+
             }
+            else
+                tBoxOut.Text = "<COMPort не выбран>";
 
         }
 
@@ -147,16 +161,33 @@ namespace COMPortTerminal
             }
             else { serialPort1.RtsEnable = false; }
         }
-
-        private void serialPort1_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        
+        public void serialPort1_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-            dataIN = serialPort1.ReadExisting();
+            dataIN = serialPort1.ReadExisting(); //+ Environment.NewLine;
             this.Invoke(new EventHandler(ShowData));
+            T = dataIN.Substring(dataIN.Length - 1);  // Метод Substring() позволяет Извлекает подстроку из этого экземпляра. Подстрока начинается с указанной позиции символа и продолжается до конца строки.
+            frm.SaveDataInPeremenaya = T;
         }
 
         private void ShowData(object sender, EventArgs e)
         {
-            tBoxDataIn.Text += dataIN;
+            //tBoxDataIn.Text += dataIN;
+
+            // Ниже реализованна система счисления ASCII, BIN, HEX
+            if (rBtnD.Checked == true)
+            {
+                tBoxDataIn.Text += Convert.ToString(Convert.ToInt32(dataIN), 2);
+            }
+            
+            else if (rBtnHEX.Checked == true)
+            {
+                tBoxDataIn.Text += Convert.ToString(Convert.ToInt32(dataIN), 16);
+            }
+            else
+            {
+                tBoxDataIn.Text += dataIN;
+            }
         }
 
         private void tBoxOut_TextChanged(object sender, EventArgs e)
@@ -164,10 +195,22 @@ namespace COMPortTerminal
 
         }
 
-        private void btnGraphic_Click(object sender, EventArgs e) // обработчик событий по нажатию на клавишу "График'.
+        public void btnGraphic_Click(object sender, EventArgs e) // обработчик событий по нажатию на клавишу "График'.
         {
-            Form2 frm = new Form2();
-            DialogResult = frm.ShowDialog();
+            
+            if (dataIN != null && dataIN.Length > 0)
+            {
+                Form2 frm = new Form2();
+                frm.SaveDataInPeremenaya = dataIN.Substring(dataIN.Length - 1);
+                frm.Show();
+            }
+
+            else
+            {
+                MessageBox.Show("Данных нет, не из чего строить график!", "", MessageBoxButtons.OK);
+                return;
+            }
         }
+        
     }
 }
