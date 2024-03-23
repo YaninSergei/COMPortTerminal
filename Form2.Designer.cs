@@ -28,69 +28,111 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.gBoxGraphiks = new System.Windows.Forms.GroupBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnDraw = new System.Windows.Forms.Button();
-            this.tBoxX = new System.Windows.Forms.TextBox();
-            this.gBoxGraphiks.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            this.tBoxRandom = new System.Windows.Forms.TextBox();
+            this.labelRandom = new System.Windows.Forms.Label();
+            this.higth = new System.Windows.Forms.Label();
+            this.numeric = new System.Windows.Forms.NumericUpDown();
+            this.chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.timer = new System.Windows.Forms.Timer(this.components);
+            this.tBoxDataPort = new System.Windows.Forms.TextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.numeric)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart)).BeginInit();
             this.SuspendLayout();
             // 
-            // gBoxGraphiks
+            // tBoxRandom
             // 
-            this.gBoxGraphiks.Controls.Add(this.pictureBox1);
-            this.gBoxGraphiks.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.gBoxGraphiks.Location = new System.Drawing.Point(12, 21);
-            this.gBoxGraphiks.Name = "gBoxGraphiks";
-            this.gBoxGraphiks.Size = new System.Drawing.Size(776, 360);
-            this.gBoxGraphiks.TabIndex = 0;
-            this.gBoxGraphiks.TabStop = false;
-            this.gBoxGraphiks.Text = "График";
+            this.tBoxRandom.Location = new System.Drawing.Point(477, 33);
+            this.tBoxRandom.Name = "tBoxRandom";
+            this.tBoxRandom.Size = new System.Drawing.Size(40, 20);
+            this.tBoxRandom.TabIndex = 12;
             // 
-            // pictureBox1
+            // labelRandom
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(22)))));
-            this.pictureBox1.Location = new System.Drawing.Point(6, 23);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(764, 335);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.labelRandom.AutoSize = true;
+            this.labelRandom.Font = new System.Drawing.Font("Times New Roman", 12F);
+            this.labelRandom.Location = new System.Drawing.Point(329, 29);
+            this.labelRandom.Name = "labelRandom";
+            this.labelRandom.Size = new System.Drawing.Size(128, 19);
+            this.labelRandom.TabIndex = 11;
+            this.labelRandom.Text = "Рандомное число";
             // 
-            // btnDraw
+            // higth
             // 
-            this.btnDraw.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDraw.BackColor = System.Drawing.Color.PowderBlue;
-            this.btnDraw.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.btnDraw.Location = new System.Drawing.Point(310, 387);
-            this.btnDraw.Name = "btnDraw";
-            this.btnDraw.Size = new System.Drawing.Size(181, 38);
-            this.btnDraw.TabIndex = 1;
-            this.btnDraw.Text = "Нарисовать график";
-            this.btnDraw.UseVisualStyleBackColor = false;
-            this.btnDraw.Click += new System.EventHandler(this.btnDraw_Click);
+            this.higth.AutoSize = true;
+            this.higth.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.higth.Location = new System.Drawing.Point(64, 31);
+            this.higth.Name = "higth";
+            this.higth.Size = new System.Drawing.Size(117, 19);
+            this.higth.TabIndex = 8;
+            this.higth.Text = "Данные с порта";
             // 
-            // tBoxX
+            // numeric
             // 
-            this.tBoxX.Location = new System.Drawing.Point(517, 405);
-            this.tBoxX.Name = "tBoxX";
-            this.tBoxX.Size = new System.Drawing.Size(34, 20);
-            this.tBoxX.TabIndex = 2;
+            this.numeric.Location = new System.Drawing.Point(748, 28);
+            this.numeric.Name = "numeric";
+            this.numeric.Size = new System.Drawing.Size(40, 20);
+            this.numeric.TabIndex = 7;
+            // 
+            // chart
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.chart.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart.Legends.Add(legend1);
+            this.chart.Location = new System.Drawing.Point(12, 69);
+            this.chart.Name = "chart";
+            series1.BorderWidth = 3;
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series1.Color = System.Drawing.Color.Black;
+            series1.Legend = "Legend1";
+            series1.Name = "Data Port";
+            series2.BorderWidth = 3;
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            series2.Legend = "Legend1";
+            series2.Name = "Random";
+            this.chart.Series.Add(series1);
+            this.chart.Series.Add(series2);
+            this.chart.Size = new System.Drawing.Size(776, 388);
+            this.chart.TabIndex = 0;
+            this.chart.Text = "chart1";
+            // 
+            // timer
+            // 
+            this.timer.Interval = 1000;
+            this.timer.Tick += new System.EventHandler(this.timer_Tick);
+            // 
+            // tBoxDataPort
+            // 
+            this.tBoxDataPort.Location = new System.Drawing.Point(200, 33);
+            this.tBoxDataPort.Name = "tBoxDataPort";
+            this.tBoxDataPort.Size = new System.Drawing.Size(40, 20);
+            this.tBoxDataPort.TabIndex = 13;
             // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.OldLace;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.tBoxX);
-            this.Controls.Add(this.btnDraw);
-            this.Controls.Add(this.gBoxGraphiks);
+            this.ClientSize = new System.Drawing.Size(800, 473);
+            this.Controls.Add(this.tBoxDataPort);
+            this.Controls.Add(this.chart);
+            this.Controls.Add(this.tBoxRandom);
+            this.Controls.Add(this.labelRandom);
+            this.Controls.Add(this.higth);
+            this.Controls.Add(this.numeric);
             this.Name = "Form2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.gBoxGraphiks.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.Load += new System.EventHandler(this.Form2_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.numeric)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -98,9 +140,12 @@
 
         #endregion
 
-        private System.Windows.Forms.GroupBox gBoxGraphiks;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button btnDraw;
-        private System.Windows.Forms.TextBox tBoxX;
+        private System.Windows.Forms.TextBox tBoxRandom;
+        private System.Windows.Forms.Label labelRandom;
+        private System.Windows.Forms.Label higth;
+        private System.Windows.Forms.NumericUpDown numeric;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart;
+        private System.Windows.Forms.Timer timer;
+        private System.Windows.Forms.TextBox tBoxDataPort;
     }
 }

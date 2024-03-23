@@ -7,52 +7,67 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace COMPortTerminal
 {
     public partial class Form2 : Form
     {
-        string DataEnd;
-        public string SaveDataInPeremenaya {  get; set; }
-
-        public Form2()
+        Form1 form1;
+        public Form2(Form1 owner)
         {
+            form1 = owner;
             InitializeComponent();
-           
-
+            StartPosition = FormStartPosition.CenterScreen; // Отображения окна в центре экрана в момент запуск программы.
 
         }
-        public void PostroenieGrafika()
+        private int _countSecond = 0; // Переменная времени, которая отвечает за переодичность обновления графика.
+        int limitheight = 100;
+        private void Form2_Load(object sender, EventArgs e)
         {
-            Graphics graphics = pictureBox1.CreateGraphics(); // Класс Graphics | экземпляр класса(переменная) graphics | = | присваиваем значения picturebox1.CreateGraphics(), для возможности сразу выводить изображение в picturebox1.
-            Pen pencil = new Pen(Color.Black, 3f); //Класс Pen | экземпляр класса(переменная) pencil | = | Инициализируем экземпляр класса Pen, указывая значения цвета и толщины линии new Pen(Color.Black, 3f).
+            timer.Enabled = true; // При запуске программы запустим таймер.
 
-            Point[] points = new Point[1000]; // C помощью класса Point создаём массив точек | экземпляр класса(переменная) points | = | Инициализируем экземпляр класса Point, указывая количество точек- 1000.
-            
-            tBoxX.Text = SaveDataInPeremenaya;
+            chart.ChartAreas[0].AxisY.Maximum = 120; // ChartAreas[x] - настройка границ осей графика, где "x" номер коллекции.
+            chart.ChartAreas[0].AxisY.Minimum = -30;
+            chart.ChartAreas[0].AxisX.LabelStyle.Format = "mm:ss"; // Задаем формат оси который будет выводиться в графике: Минуты, секунды.
+            chart.Series[0].XValueType = ChartValueType.DateTime; // Задаем формат в котором будет отображаться информация: Время.
 
-            int ZnamenatelSinusa;
-            try
-            {
-                ZnamenatelSinusa = Convert.ToInt32(SaveDataInPeremenaya);
-            }
-            catch
-            {
-                MessageBox.Show("не корректное значение!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+            chart.ChartAreas[0].AxisX.Maximum = DateTime.Now.AddMinutes(1).ToOADate(); // Максимум оси X задаем текущее время.
+            chart.ChartAreas[0].AxisX.Minimum = DateTime.Now.ToOADate(); // Минимумом оси X задаем текущее время.
 
-            for (int i = 0; i < points.Length; i++) // начинаем заполнять массив. 
-            {
-                points[i] = new Point(i, (int)(Math.Sin((double)i / ZnamenatelSinusa) * 100 + 150)); // задаём функцию каждой точке.      
-            }
-            graphics.Clear(Color.White); 
-            graphics.DrawLines(pencil, points);
+            chart.ChartAreas[0].AxisX.IntervalType = DateTimeIntervalType.Seconds; // Настройка интервала времени.
+            chart.ChartAreas[0].AxisX.Interval = 5; // Интервал сетки.
         }
-
-        public void btnDraw_Click(object sender, EventArgs e)
+        private void timer_Tick(object sender, EventArgs e)
         {
-            PostroenieGrafika();
+            // отображение введенного числа в поле numeric.
+            DateTime timNow = DateTime.Now; // текущее время.
+            tBoxDataPort.Text = form1.T.ToString(); // Переменная принимающая знаечение из COMPORT 
+            string DataPort = tBoxDataPort.Text;
+
+            Random random = new Random(DateTime.Now.Millisecond); //Функция рандома.
+            double randomHeigth = random.Next(-5, 100); //Переменна типа double, значение которой в дальнейшем будем подставлять в кривую коллекции [1].
+            tBoxRandom.Text = randomHeigth.ToString();
+
+            chart.Series[0].Points.AddXY(timNow, DataPort); // Функции chart (графика) воспроизводить по точкам кривую коллекции .Series [0] и [1]. 
+            chart.Series[1].Points.AddXY(timNow, randomHeigth);
+            // На данном этапе по прошествию минуты или достижению _countSecond = 60 (Переменная временного интервала) - на графике остонавливается отображение кривой!
+
+            // Решение данной проблемы:
+            _countSecond++; // Каждый раз к переменной времени _countSecond, мы будем прибавлять одну секунду.
+            // Теперь c помощью условного оператора if, создадим условие: (при достижении _countSecond == 60) ->, переменная _countSecond обнуляется и координатная ось рисуется заново!
+
+            if (_countSecond == 60)
+            {
+                _countSecond = 0;
+                chart.ChartAreas[0].AxisX.Maximum = DateTime.Now.AddMinutes(1).ToOADate(); // Максимум оси X задаем текущее время.
+                chart.ChartAreas[0].AxisX.Minimum = DateTime.Now.ToOADate(); // Минимумом оси X задаем текущее время.
+
+                chart.ChartAreas[0].AxisX.IntervalType = DateTimeIntervalType.Seconds; // Настройка интервала времени.
+                chart.ChartAreas[0].AxisX.Interval = 5; // Интервал сетки.
+            }
+
         }
+       
     }
 }

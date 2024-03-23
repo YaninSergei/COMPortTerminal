@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.tBoxT = new System.Windows.Forms.TextBox();
             this.btnClearDataIn = new System.Windows.Forms.Button();
             this.btnGraphic = new System.Windows.Forms.Button();
             this.btnsave = new System.Windows.Forms.Button();
@@ -41,6 +42,7 @@
             this.btnsend = new System.Windows.Forms.Button();
             this.tBoxOut = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.rBtnHEX = new System.Windows.Forms.RadioButton();
             this.rBtnD = new System.Windows.Forms.RadioButton();
             this.rBtnASCII = new System.Windows.Forms.RadioButton();
@@ -61,8 +63,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.cBoxComPort = new System.Windows.Forms.ComboBox();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
-            this.tBoxT = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -83,6 +83,13 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Входящие данные";
+            // 
+            // tBoxT
+            // 
+            this.tBoxT.Location = new System.Drawing.Point(122, 485);
+            this.tBoxT.Name = "tBoxT";
+            this.tBoxT.Size = new System.Drawing.Size(51, 26);
+            this.tBoxT.TabIndex = 15;
             // 
             // btnClearDataIn
             // 
@@ -167,7 +174,7 @@
             // 
             this.tBoxDataOut.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.tBoxDataOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tBoxDataOut.Location = new System.Drawing.Point(0, 370);
+            this.tBoxDataOut.Location = new System.Drawing.Point(6, 364);
             this.tBoxDataOut.Multiline = true;
             this.tBoxDataOut.Name = "tBoxDataOut";
             this.tBoxDataOut.ScrollBars = System.Windows.Forms.ScrollBars.Both;
@@ -230,6 +237,16 @@
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Параметры";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label6.Location = new System.Drawing.Point(55, 273);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(146, 18);
+            this.label6.TabIndex = 24;
+            this.label6.Text = "Система счисления";
             // 
             // rBtnHEX
             // 
@@ -447,23 +464,6 @@
             // 
             this.serialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort1_DataReceived);
             // 
-            // tBoxT
-            // 
-            this.tBoxT.Location = new System.Drawing.Point(149, 489);
-            this.tBoxT.Name = "tBoxT";
-            this.tBoxT.Size = new System.Drawing.Size(52, 26);
-            this.tBoxT.TabIndex = 15;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label6.Location = new System.Drawing.Point(55, 273);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(146, 18);
-            this.label6.TabIndex = 24;
-            this.label6.Text = "Система счисления";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -492,10 +492,7 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnsave;
-        private System.Windows.Forms.TextBox tBoxDataIn;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox tBoxDataOut;
         private System.Windows.Forms.Button btnsend;
@@ -511,11 +508,9 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.IO.Ports.SerialPort serialPort1;
         private System.Windows.Forms.Button btnStop;
         private System.Windows.Forms.Button btnConnect;
         private System.Windows.Forms.ProgressBar progressBar1;
-        private System.Windows.Forms.Button btnGraphic;
         private System.Windows.Forms.Label LabelConnectStatus;
         private System.Windows.Forms.Button btnClearDataOut;
         private System.Windows.Forms.CheckBox chBoxDtrEnable;
@@ -526,6 +521,10 @@
         private System.Windows.Forms.RadioButton rBtnASCII;
         private System.Windows.Forms.TextBox tBoxT;
         private System.Windows.Forms.Label label6;
+        public System.IO.Ports.SerialPort serialPort1;
+        public System.Windows.Forms.GroupBox groupBox1;
+        public System.Windows.Forms.TextBox tBoxDataIn;
+        public System.Windows.Forms.Button btnGraphic;
     }
 }
 

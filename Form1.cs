@@ -12,8 +12,8 @@ namespace COMPortTerminal
         string dataOUT; // Переменная выходных данных
         string dataIN;  // Переменная входных данных
         int SistemaSchisleniya; // Переменная для системы счисления.
-        string T; // Переменная которая вычленяет последний символ из dataIN
-        Form2 frm = new Form2(); // Форма для вывода графика. 
+        public string T; // Переменная которая вычленяет последний символ из dataIN
+        
         
 
         public Form1()
@@ -24,20 +24,9 @@ namespace COMPortTerminal
 
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        public void Form1_Load(object sender, EventArgs e)
         {
             FormBorderStyle = FormBorderStyle.FixedSingle;
-
-
-            btnsave.FlatAppearance.BorderSize = 2;
-            btnsave.FlatAppearance.BorderColor = Color.Black;
-            btnsave.Text = "Сохранить";
-            groupBox1.Controls.Add(btnsave);
-            btnsend.FlatAppearance.BorderSize = 2;
-            btnsend.FlatAppearance.BorderColor = Color.Black;
-            groupBox2.Controls.Add(btnsend);
-
-
         }
 
         private void Form1_Load_1(object sender, EventArgs e)
@@ -49,7 +38,6 @@ namespace COMPortTerminal
             serialPort1.DtrEnable = false;
             chBoxRtsEnable.Checked = false;
             serialPort1.RtsEnable = false;
-
         }
 
         private void btnConnect_Click(object sender, EventArgs e) // Обработчик событий при нажатии конпки "Connect".
@@ -111,11 +99,9 @@ namespace COMPortTerminal
                 serialPort1.Write(dataOUT);
                 tBoxOut.Text += $" \n + {dataOUT}";
                 tBoxDataOut.Clear();
-
             }
             else
                 tBoxOut.Text = "<COMPort не выбран>";
-
         }
 
 
@@ -167,7 +153,7 @@ namespace COMPortTerminal
             dataIN = serialPort1.ReadExisting(); //+ Environment.NewLine;
             this.Invoke(new EventHandler(ShowData));
             T = dataIN.Substring(dataIN.Length - 1);  // Метод Substring() позволяет Извлекает подстроку из этого экземпляра. Подстрока начинается с указанной позиции символа и продолжается до конца строки.
-            frm.SaveDataInPeremenaya = T;
+            tBoxT.Text = T;
         }
 
         private void ShowData(object sender, EventArgs e)
@@ -197,14 +183,10 @@ namespace COMPortTerminal
 
         public void btnGraphic_Click(object sender, EventArgs e) // обработчик событий по нажатию на клавишу "График'.
         {
-            
-            if (dataIN != null && dataIN.Length > 0)
+            if (dataIN != null && dataIN.Length > 0) //При нажатии на кнопку "График" выполняется условие наличия каких либо данных в окне приема.
             {
-                Form2 frm = new Form2();
-                frm.SaveDataInPeremenaya = dataIN.Substring(dataIN.Length - 1);
-                frm.Show();
+                new Form2(this).Show(); // Далее открывается форма для отображения данных в виде кривой, куда мы переносим свои права как владелец.
             }
-
             else
             {
                 MessageBox.Show("Данных нет, не из чего строить график!", "", MessageBoxButtons.OK);
