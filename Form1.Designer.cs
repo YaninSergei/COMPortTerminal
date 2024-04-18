@@ -63,6 +63,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.cBoxComPort = new System.Windows.Forms.ComboBox();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
+            this.btnTerminal = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -210,6 +211,7 @@
             // groupBox3
             // 
             this.groupBox3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.groupBox3.Controls.Add(this.btnTerminal);
             this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.Controls.Add(this.rBtnHEX);
             this.groupBox3.Controls.Add(this.rBtnD);
@@ -464,6 +466,16 @@
             // 
             this.serialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort1_DataReceived);
             // 
+            // btnTerminal
+            // 
+            this.btnTerminal.Location = new System.Drawing.Point(86, 431);
+            this.btnTerminal.Name = "btnTerminal";
+            this.btnTerminal.Size = new System.Drawing.Size(115, 29);
+            this.btnTerminal.TabIndex = 25;
+            this.btnTerminal.Text = "TERMINAL";
+            this.btnTerminal.UseVisualStyleBackColor = true;
+            this.btnTerminal.Click += new System.EventHandler(this.btnTerminal_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -525,6 +537,7 @@
         public System.Windows.Forms.GroupBox groupBox1;
         public System.Windows.Forms.TextBox tBoxDataIn;
         public System.Windows.Forms.Button btnGraphic;
+        private System.Windows.Forms.Button btnTerminal;
     }
 }
 

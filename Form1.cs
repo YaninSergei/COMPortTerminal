@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO.Ports; //Библиотека по портам.
 using System.Security.Cryptography.X509Certificates;
@@ -193,6 +194,12 @@ namespace COMPortTerminal
                 return;
             }
         }
-        
+
+
+        private void btnTerminal_Click(object sender, EventArgs e)  // обработчик события нажатия на клавишу "TERMINAL". Запускает программу.
+
+        {
+            Process.Start("C:\\Users\\user\\Desktop\\Tera Term");
+        }
     }
 }
