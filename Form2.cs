@@ -1,18 +1,17 @@
-﻿using System;
+﻿using profilus_project;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 
+
 namespace COMPortTerminal
 {
-    public partial class Form2 : Form
+    public partial class Form2 : Form1 
     {
+        
+
+
         Form1 form1;
         public Form2(Form1 owner)
         {
@@ -68,6 +67,7 @@ namespace COMPortTerminal
             }
 
         }
-       
+
+
     }
 }
