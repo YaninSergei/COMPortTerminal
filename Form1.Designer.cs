@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.buttonPriem = new System.Windows.Forms.Button();
             this.tBoxT = new System.Windows.Forms.TextBox();
             this.btnClearDataIn = new System.Windows.Forms.Button();
             this.btnGraphic = new System.Windows.Forms.Button();
@@ -42,6 +43,7 @@
             this.btnsend = new System.Windows.Forms.Button();
             this.tBoxOut = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnTerminal = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.rBtnHEX = new System.Windows.Forms.RadioButton();
             this.rBtnD = new System.Windows.Forms.RadioButton();
@@ -63,7 +65,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.cBoxComPort = new System.Windows.Forms.ComboBox();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
-            this.btnTerminal = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -72,6 +73,7 @@
             // groupBox1
             // 
             this.groupBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.groupBox1.Controls.Add(this.buttonPriem);
             this.groupBox1.Controls.Add(this.tBoxT);
             this.groupBox1.Controls.Add(this.btnClearDataIn);
             this.groupBox1.Controls.Add(this.btnGraphic);
@@ -84,6 +86,20 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Входящие данные";
+            // 
+            // buttonPriem
+            // 
+            this.buttonPriem.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonPriem.BackColor = System.Drawing.Color.PowderBlue;
+            this.buttonPriem.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonPriem.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonPriem.Location = new System.Drawing.Point(189, 529);
+            this.buttonPriem.Name = "buttonPriem";
+            this.buttonPriem.Size = new System.Drawing.Size(91, 33);
+            this.buttonPriem.TabIndex = 16;
+            this.buttonPriem.Text = "Показать";
+            this.buttonPriem.UseVisualStyleBackColor = false;
+            this.buttonPriem.Click += new System.EventHandler(this.buttonPriem_Click);
             // 
             // tBoxT
             // 
@@ -239,6 +255,16 @@
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Параметры";
+            // 
+            // btnTerminal
+            // 
+            this.btnTerminal.Location = new System.Drawing.Point(86, 431);
+            this.btnTerminal.Name = "btnTerminal";
+            this.btnTerminal.Size = new System.Drawing.Size(115, 29);
+            this.btnTerminal.TabIndex = 25;
+            this.btnTerminal.Text = "TERMINAL";
+            this.btnTerminal.UseVisualStyleBackColor = true;
+            this.btnTerminal.Click += new System.EventHandler(this.btnTerminal_Click);
             // 
             // label6
             // 
@@ -466,16 +492,6 @@
             // 
             this.serialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort1_DataReceived);
             // 
-            // btnTerminal
-            // 
-            this.btnTerminal.Location = new System.Drawing.Point(86, 431);
-            this.btnTerminal.Name = "btnTerminal";
-            this.btnTerminal.Size = new System.Drawing.Size(115, 29);
-            this.btnTerminal.TabIndex = 25;
-            this.btnTerminal.Text = "TERMINAL";
-            this.btnTerminal.UseVisualStyleBackColor = true;
-            this.btnTerminal.Click += new System.EventHandler(this.btnTerminal_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -538,6 +554,7 @@
         public System.Windows.Forms.TextBox tBoxDataIn;
         public System.Windows.Forms.Button btnGraphic;
         private System.Windows.Forms.Button btnTerminal;
+        private System.Windows.Forms.Button buttonPriem;
     }
 }
 
