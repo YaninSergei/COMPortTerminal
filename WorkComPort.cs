@@ -8,9 +8,14 @@ namespace profilus_project
 {
     class WProtocolParser
     {
-        string Akumulator = new String("");
+        private string Akumulator { get; set; }
+        public WProtocolParser(IShowEntries _dataprint)
+        {
+            dataprint = _dataprint;
+        }
+        IShowEntries dataprint;
 
-       
+
         public void WorkComPort(string PriemData, List<Entry> entries)
         {
             if (PriemData == "\n")
@@ -20,7 +25,7 @@ namespace profilus_project
                 {
                     if (datas[i] != "")
                     {
-                        string[] fields = datas[i].Split("=");
+                        string[] fields = datas[i].Split('=');
                         string name = fields[0];
                         int value = Convert.ToInt32(fields[1]);
                         // Если размер Fields не равен 2-м то я ни"я не делаю
@@ -33,7 +38,10 @@ namespace profilus_project
 
                 }
 
-                IShowEntries dataprint = new ConsoleShowData();
+                
+                
+
+
 
                 dataprint.ShowEntries(entries);
                 Akumulator = "";

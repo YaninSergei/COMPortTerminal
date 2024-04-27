@@ -1,4 +1,6 @@
-﻿using System;
+﻿using profilus_project;
+using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO.Ports; //Библиотека по портам.
@@ -8,14 +10,56 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace COMPortTerminal
 {
-    public partial class Form1 : Form
+    public partial class Form1 : Form, IShowEntries
     {
         string dataOUT; // Переменная выходных данных
         string dataIN;  // Переменная входных данных
         int SistemaSchisleniya; // Переменная для системы счисления.
         public string T; // Переменная которая вычленяет последний символ из dataIN
+
+        WProtocolParser Parser;
         
-        
+
+        static List<Entry> entries = new List<Entry>();
+
+
+        private void buttonPriem_Click(object sender, EventArgs e)
+        {
+            TestPriemdata();
+        }
+
+
+        void TestPriemdata()
+        {
+            string PriemData = "AB=001,BC=002,\nCD=003,DE=004\n";
+            
+
+            List<Entry> entries = new List<Entry>(); // Создаем список параметризуемый классом Entry
+
+            for (int i = 0; i < PriemData.Length; i++)
+            {
+                Parser.WorkComPort(Convert.ToString(PriemData[i]), entries);
+
+            }
+            IShowEntries dataprint;
+            
+        }
+
+        void IShowEntries.ShowEntries(List<Entry> prientries)
+        {
+
+            tBoxDataIn.Text += ("Начал Сообщение");
+            tBoxDataIn.Text +=(prientries);
+            tBoxDataIn.Text += (prientries.Count);
+            for (int i = 0; i < prientries.Count; i++)
+            {
+                tBoxDataIn.Text += ("Ключ:" + prientries[i].key);
+                tBoxDataIn.Text += ("Значение:" + prientries[i].value);
+
+            }
+            tBoxDataIn.Text += (" Конец Сообщение");
+            tBoxDataIn.Text += ("");
+        }
 
         public Form1()
         {           // Конструктор класса Form 1:
@@ -28,6 +72,7 @@ namespace COMPortTerminal
         public void Form1_Load(object sender, EventArgs e)
         {
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            
         }
 
         private void Form1_Load_1(object sender, EventArgs e)
@@ -39,6 +84,7 @@ namespace COMPortTerminal
             serialPort1.DtrEnable = false;
             chBoxRtsEnable.Checked = false;
             serialPort1.RtsEnable = false;
+            Parser = new WProtocolParser(this);
         }
 
         private void btnConnect_Click(object sender, EventArgs e) // Обработчик событий при нажатии конпки "Connect".
@@ -201,5 +247,9 @@ namespace COMPortTerminal
         {
             Process.Start("C:\\Users\\user\\Desktop\\Tera Term");
         }
+
+
+
+
     }
 }

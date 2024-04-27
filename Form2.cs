@@ -7,9 +7,12 @@ using System.Windows.Forms.DataVisualization.Charting;
 
 namespace COMPortTerminal
 {
-    public partial class Form2 : Form1 
+    public partial class Form2 : Form, IShowEntries
     {
-        
+        void IShowEntries.ShowEntries(List<Entry> prientries)
+        {
+           
+        }
 
 
         Form1 form1;
