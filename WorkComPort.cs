@@ -34,30 +34,15 @@ namespace profilus_project
                         e.value = value;
                         entries.Add(e);
                     }
-
-
-
                 }
-
-                
-                
-
-
-
                 dataprint.ShowEntries(entries);
                 Akumulator = "";
                 entries.Clear();
-
-
             }
             else
             {
                 Akumulator = Akumulator + PriemData;
-
             }
-
-
-
         }
     }
 }

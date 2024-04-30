@@ -57,7 +57,7 @@ namespace COMPortTerminal
                 tBoxDataIn.Text += ("Значение:" + prientries[i].value);
 
             }
-            tBoxDataIn.Text += (" Конец Сообщение");
+            tBoxDataIn.Text += ("Конец Сообщение");
             tBoxDataIn.Text += ("");
         }
 

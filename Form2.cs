@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using static profilus_project.WProtocolParser;
@@ -23,9 +24,6 @@ namespace COMPortTerminal
                     chart.Series[0].Points.AddXY( counter++ , prientries[i].value);
                 }
             }
-                
-
-
         }
 
 
@@ -40,9 +38,19 @@ namespace COMPortTerminal
 
 
         private void Form2_Load(object sender, EventArgs e)
-        {
-           
-        
+        {           
+
+            chart.ChartAreas[0].AxisY.Maximum = 10; // ChartAreas[x] - настройка границ осей графика, где "x" номер коллекции.
+            chart.ChartAreas[0].AxisY.Minimum = -5;
+            
+
+
+            chart.ChartAreas[0].AxisX.Maximum = 10; // Максимум оси X .
+            chart.ChartAreas[0].AxisX.Minimum = -5; // Минимумом оси X.
+
+
+            chart.ChartAreas[0].AxisX.Interval = 5; // Интервал сетки.
+
 
         }
 
