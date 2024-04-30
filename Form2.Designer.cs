@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
@@ -38,7 +37,6 @@
             this.higth = new System.Windows.Forms.Label();
             this.numeric = new System.Windows.Forms.NumericUpDown();
             this.chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.timer = new System.Windows.Forms.Timer(this.components);
             this.tBoxDataPort = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.numeric)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart)).BeginInit();
@@ -104,11 +102,6 @@
             this.chart.TabIndex = 0;
             this.chart.Text = "chart1";
             // 
-            // timer
-            // 
-            this.timer.Interval = 1000;
-            this.timer.Tick += new System.EventHandler(this.timer_Tick);
-            // 
             // tBoxDataPort
             // 
             this.tBoxDataPort.Location = new System.Drawing.Point(200, 33);
@@ -145,7 +138,6 @@
         private System.Windows.Forms.Label higth;
         private System.Windows.Forms.NumericUpDown numeric;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart;
-        private System.Windows.Forms.Timer timer;
         private System.Windows.Forms.TextBox tBoxDataPort;
     }
 }

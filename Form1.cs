@@ -31,7 +31,7 @@ namespace COMPortTerminal
 
         void TestPriemdata()
         {
-            string PriemData = "AB=001,BC=002,\nCD=003,DE=004\n";
+            string PriemData = "X=001,Y=002,\nCD=003,DE=004\n";
             
 
             List<Entry> entries = new List<Entry>(); // Создаем список параметризуемый классом Entry
@@ -41,7 +41,7 @@ namespace COMPortTerminal
                 Parser.WorkComPort(Convert.ToString(PriemData[i]), entries);
 
             }
-            IShowEntries dataprint;
+            
             
         }
 
@@ -230,15 +230,9 @@ namespace COMPortTerminal
 
         public void btnGraphic_Click(object sender, EventArgs e) // обработчик событий по нажатию на клавишу "График'.
         {
-            if (dataIN != null && dataIN.Length > 0) //При нажатии на кнопку "График" выполняется условие наличия каких либо данных в окне приема.
-            {
-                new Form2(this).Show(); // Далее открывается форма для отображения данных в виде кривой, куда мы переносим свои права как владелец.
-            }
-            else
-            {
-                MessageBox.Show("Данных нет, не из чего строить график!", "", MessageBoxButtons.OK);
-                return;
-            }
+
+             new Form2(this).Show(); // Далее открывается форма для отображения данных в виде кривой, куда мы переносим свои права как владелец.
+
         }
 
 
