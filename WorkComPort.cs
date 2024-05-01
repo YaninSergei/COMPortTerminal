@@ -9,11 +9,12 @@ namespace profilus_project
     class WProtocolParser
     {
         private string Akumulator { get; set; }
+        IShowEntries dataprint;
         public WProtocolParser(IShowEntries _dataprint)
         {
             dataprint = _dataprint;
         }
-        IShowEntries dataprint;
+        
 
 
         public void WorkComPort(string PriemData, List<Entry> entries)
@@ -33,30 +34,15 @@ namespace profilus_project
                         e.value = value;
                         entries.Add(e);
                     }
-
-
-
                 }
-
-                
-                
-
-
-
                 dataprint.ShowEntries(entries);
                 Akumulator = "";
                 entries.Clear();
-
-
             }
             else
             {
                 Akumulator = Akumulator + PriemData;
-
             }
-
-
-
         }
     }
 }
